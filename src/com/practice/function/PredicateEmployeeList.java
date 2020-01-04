@@ -1,13 +1,12 @@
-package com.practice.impl;
+package com.practice.function;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 import com.practice.pojo.Employee;
 
-public class TestComparatorEmployeeLambda {
+public class PredicateEmployeeList {
 
 	public static void main(String[] args) {
 		List<Employee> empList = new ArrayList<Employee>();
@@ -19,18 +18,20 @@ public class TestComparatorEmployeeLambda {
 		empList.add(new Employee(103, "Kajal", 65000));
 		empList.add(new Employee(104, "Rashmika", 60000));
 		
-//		empList.forEach(System.out::println);
-//		Collections.sort(empList, (e1,e2)->e2.getEmpId()-e1.getEmpId());//sort based on empId in descending order
-		
-//		Collections.sort(empList, (e1,e2)->e2.getName().compareTo(e1.getName()));
-		
-		Collections.sort(empList, new MyComparatorName());
-		
-//		Collections.sort(empList,(e1,e2)->(int)(e2.getSalary()-e1.getSalary())); 
+		Predicate<Employee> p = emp->emp.getSalary()>50000;
 		
 		for (Employee employee : empList) {
-			System.out.println(employee);
+			if(p.test(employee)) {
+				System.out.println(employee);
+			}
 		}
-//		System.out.println(empList);
+		System.out.println("-------------------------");
+		Predicate<Employee> p2 = emp->emp.getName().length()%2==0;
+		
+		for (Employee employee : empList) {
+			if(p2.test(employee)) {
+				System.out.println(employee);
+			}
+		}
 	}
 }
