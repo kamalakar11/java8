@@ -9,6 +9,7 @@ import com.practice.pojo.Employee;
 public class ConsumerMethod {
 
 	public static void main(String[] args) {
+		
 		List<Employee> empList = new ArrayList<Employee>();
 		empList.add(new Employee(102, "Mahesh", 50000));
 		empList.add(new Employee(101, "Samantha", 60000));
